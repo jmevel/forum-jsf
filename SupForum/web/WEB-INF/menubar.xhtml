@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <div class="ui red inverted menu">
+        <h:form class="active item">
+            <i class="large home icon"></i>
+            <c:if test="#{userController.loggedUser!=null}">
+                <h:commandLink value="Home" action="#{homeController.goHome()}" />
+            </c:if>
+            <c:if test="#{userController.loggedUser==null}">
+                <h:commandLink value="Index" action="#{homeController.goHome()}" />
+            </c:if>
+        </h:form>
+        <c:if test="#{userController.loggedUser==null}">
+            <h:form class="active item">
+                <i class="large users icon"></i>
+                <h:commandLink value="Forum" action="#{homeController.goPublicForum()}" />
+            </h:form>
+        </c:if>
+        <h:form class="active item">
+            <i class="large tasks icon"></i>
+            <h:commandLink value="Create fake data in DB" action="#{categoryController.create()}" />
+        </h:form>
+        <c:if test="#{userController.loggedUser!=null}">
+            <h:form class="right menu active item">
+                <i class="large off icon"></i>
+                <h:commandLink value="Logout" action="#{userController.logout()}" />
+            </h:form>
+        </c:if>
+    </div>
+</ui:composition>

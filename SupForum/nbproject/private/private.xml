@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/service/TopicService.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/utils/Mock.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/service/UserService.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/controller/HomeController.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/service/AnswerService.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/web/auth/home_moderator.xhtml</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/entity/Administrator.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/web/template/anonymous.xhtml</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/entity/Moderator.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/web/auth/topic_user.xhtml</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/controller/BoardController.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/web/index.xhtml</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/entity/UserType.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/service/CategoryService.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/web/auth/topic_moderator.xhtml</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/entity/User.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/conf/persistence.xml</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/web/WEB-INF/glassfish-web.xml</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/entity/Board.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/entity/Category.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/controller/CategoryController.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/web/forum.xhtml</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/controller/UserController.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/listener/TopicTitleChangeListener.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/web/css/semantic.css</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/web/WEB-INF/menubar.xhtml</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/service/BoardService.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/constraint/CheckPassword.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/web/auth/home_user.xhtml</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/controller/AuthenticateFilter.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/entity/Topic.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/web/auth/home_administrator.xhtml</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/entity/Answer.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/src/java/com/supinfo/supforum/controller/TopicController.java</file>
+            <file>file:/C:/Users/koenigs/Documents/NetBeansProjects/SupForum/web/template/authenticated.xhtml</file>
+        </group>
+    </open-files>
+</project-private>

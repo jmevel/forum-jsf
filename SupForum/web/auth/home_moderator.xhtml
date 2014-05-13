@@ -1,0 +1,124 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../template/authenticated.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="head">
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.ui.accordion').accordion();
+                $('.ui.modal').modal();
+                $('.deleteTopic').popup();
+                $('#createTopic').popup();
+            });
+            
+            function deleteTopic(topicId)
+            {
+                console.log($('#deleteTopic'+topicId));
+                $('.deleteTopic'+topicId).click();
+            }
+            
+            function showCreateTopicModal(categoryName, boardId, boardName)
+            {
+                $('div.ui.modal').find('#categoryBreadcrumb').html(categoryName);
+                $('div.ui.modal').find('#boardBreadcrumb').html(boardName);
+                $('div.ui.modal').find('#boardBreadcrumb').html(boardName);
+                $('div.ui.modal').find('#newTopicBoardId').attr("value", boardId);
+                $('.ui.modal').modal('show');
+            }
+            
+            function postNewTopic()
+            {
+                $('div.ui.modal').find('.taMereJsfAvecLesIds2').click();
+            }
+        </script>
+    </ui:define>
+
+    <ui:define name="links">
+        <ui:include src="../WEB-INF/menubar.xhtml" />
+    </ui:define>
+
+    <ui:define name="content">
+              <div class="ui modal">
+            <i class="close icon"></i>
+            <div class="ui breadcrumb" style="margin-left: 30px;">
+                <a class="section" id="categoryBreadcrumb"></a>
+                <i class="right arrow icon divider"></i>
+                <div class="active section" id="boardBreadcrumb"></div>
+            </div>
+            <h:form class="ui form">
+                <div class="header field" style="text-align: center;">
+                    <label style="text-align: left!important; margin-left: 35px;"> Title </label>
+                    <div class="ui left input" style="max-width: 90%;">
+                        <h:inputText value="#{topicController.newTopic.title}"/>
+                    </div>
+                </div>
+                <div class="field" style="text-align: center;">
+                    <label style="text-align: left!important; margin-left: 35px;"> Text </label>
+                    <div class="ui center input" style="max-width: 90%;">
+                        <h:inputTextarea value="#{topicController.newTopic.content}"/>
+                    </div>
+                </div>
+                <input type="hidden" name="newTopicBoardId" id="newTopicBoardId" />
+                <h:commandButton value="Post" class="taMereJsfAvecLesIds2" action="#{topicController.createTopic()}" style="visibility: hidden;" />
+            </h:form>
+            <div class="actions">
+                <div class="ui buttons">
+                    <div class="ui negative button">Cancel</div>
+                    <div class="or"></div>
+                    <div class="ui positive button" onclick="postNewTopic()">Post</div>
+                </div>
+            </div>
+        </div>
+        <c:forEach var="category" items="#{categoryController.categories}">
+            <h4 class="ui top red attached header">#{category.getName()}</h4>
+            <div class="ui segment attached">
+                <div class="ui accordion">
+                    <c:forEach var="board" items="#{boardController.getBoards(category.getId())}"> 
+                        <div class="title">
+                            <i class="dropdown icon red"></i>
+                            #{board.getName()}
+                        </div>
+                        <div class="content">
+                            <div class="ui list">
+                                <i class="add sign box icon" id="createTopic"  title="Click to create new topic" style="display: inline-block; float: right" onclick="showCreateTopicModal('#{category.getName()}', #{board.getId()}, '#{board.getName()}')"></i>
+                                <c:forEach var="topic" items="#{topicController.getTopics(board.getId())}">
+                                    <div class="item">
+                                        <i class="comment icon" style="display: inline-block"></i>
+                                        <div class="content" style="display: inline-block; padding-top: 0px;" >
+                                            <h:form style="display: inline-block">
+                                                <h:commandLink value="#{topic.getTitle()}" action="#{topicController.getTopic(topic.getId())}" >
+                                                    <f:param name="id" value="#{topic.getId()}" />
+                                                </h:commandLink>
+                                            </h:form>
+                                            <i class="remove circle icon deleteTopic"  title="Click to delete topic" style="display: inline-block" onclick="deleteTopic(#{topic.getId()})"></i>
+                                            <h:form style="display: inline-block" >                                               
+                                                 <h:commandButton value="delete" class="deleteTopic#{topic.getId()}" action="#{topicController.deleteTopicById(topic.getId())}" style="display: none">                                                   
+                                                </h:commandButton>   
+                                            </h:form>
+                                            <div class="description">
+                                                Created: #{topic.getFormatedCreationDate("dd/MM/yy H:mm")} by #{topic.user.username}<br/>
+                                                Last message: #{topic.getFormatedUpdateDate("dd/MM/yy H:mm")}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+        </c:forEach>
+        <p>Statistics:</p>
+        <p>User number: #{userController.getUserCount()}</p>
+        <p>Topic number: #{topicController.getTopicCount()}</p>
+    </ui:define>
+</ui:composition>
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../template/authenticated.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="head">
+
+    </ui:define>
+
+    <ui:define name="links">
+        <ui:include src="../WEB-INF/menubar.xhtml" />
+    </ui:define>
+
+    <ui:define name="content">
+        <h4 class="ui top red attached header">
+            #{topicController.topic.getTitle()}
+        </h4>
+        <div class="ui celled grid">
+            <div class="row">
+                <div class="two wide column" style="">
+                    <h4>#{topicController.topic.user.username}</h4>
+                </div>
+                <div class="eight wide column">
+                    <div class="ui top tiny">#{topicController.topic.getFormatedCreationDate("dd/MM/yy H:mm")}</div>
+                    <p>#{topicController.topic.getContent()}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="one wide column"></div>
+            </div>
+            <c:forEach var="answer" items="#{topicController.getAnswerOrderByAsc()}">
+                <div class="row">
+                    <div class="two wide column">
+                        <h4>#{answer.user.username}</h4>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="ui top tiny">#{answer.getFormatedDate("dd/MM/yy H:mm")}</div>
+                        <p>#{answer.content}</p>
+                    </div>
+                </div>
+            </c:forEach>
+            <div class="row">
+                <div class="one wide column"></div>
+            </div>
+            <div class="row">
+                <div class="one wide column">
+                    <div class="ui form">
+                        <h:form class="field">
+                            <label>Answer</label>
+                            <h:inputTextarea value="#{topicController.answerMessage}" label="Username" />
+                            <h:commandButton value="Post" action="#{topicController.postAnswer()}" class="ui red submit button floated right" />
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+
+
+
+
+
+
+
+

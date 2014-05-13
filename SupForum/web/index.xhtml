@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="template/anonymous.xhtml">
+
+    <ui:define name="links">
+        <ui:include src="WEB-INF/menubar.xhtml" />
+    </ui:define>
+    <ui:define name="content">
+        <div class="ui two column grid basic segment">
+            <div class="column">
+                <h3 class="ui inverted red block header"> SIGN UP </h3>
+                <div class="ui red stacked segment">
+                    <h:form class="ui form">
+                        <div class="field">
+                            <label> Username </label>
+                            <div class="ui left labeled icon input">
+                                <h:inputText value="#{userController.username}" label="Username" />
+                                <i class="user icon"></i>
+                                <div class="ui corner label">
+                                    <i class="asterisk icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="two fields">
+                            <div class="field">
+                                <label> Password </label>
+                                <div class="ui left labeled icon input">
+                                    <h:inputSecret value="#{userController.password}" label="Password" />
+                                    <i class="lock icon"></i>
+                                    <div class="ui corner label">
+                                        <i class="asterisk icon"></i>
+                                    </div>
+                                </div>   
+                            </div>
+                            <div class="field">
+                                <label> Confirm Password </label>
+                                <div class="ui left labeled icon input">
+                                    <h:inputSecret  value="#{userController.passwordConfim}" label="Confirm password" />
+                                    <i class="lock icon"></i>
+                                    <div class="ui corner label">
+                                        <i class="asterisk icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="two fields">
+                            <div class="field">
+                                <label> Type </label>
+                                <div class="ui left labeled icon input">
+                                    <h:selectOneMenu value="#{userController.selectedType}" class="ui selection dropdown"> 
+                                        <i class="dropdown icon"></i>
+                                        <f:selectItems value="#{userController.type}"  />
+                                    </h:selectOneMenu>
+                                </div>
+                            </div>
+                            <label style="visibility: hidden"> Register </label><br/>
+                            <h:commandButton value="Register" action="#{userController.register()}" class="ui red submit button floated right" />
+                        </div>
+                    </h:form>     
+                </div>
+            </div>
+            <div class="ui vertical divider"> OR </div>
+            <div class="column" style="margin-top: 0px!important;">
+                <h3 class="ui inverted red block header"> SIGN IN </h3>
+                <div class="ui red stacked segment">
+                    <h:form class="ui form">
+                        <div class="field">
+                            <label> Username </label>
+                            <div class="ui left labeled icon input">
+                                <h:inputText value="#{userController.username}" label="Username" />
+                                <i class="user icon"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label> Password </label>
+                            <div class="ui left labeled icon input">
+                                <h:inputSecret value="#{userController.password}" label="Password" />
+                                <i class="lock icon"></i>
+                            </div>
+                        </div>
+                        <h2 style="visibility: hidden; display: inline-block;"> Register </h2>
+                        <h:commandButton  style="display: inline-block; margin-top: 20px;" value="Login" action="#{userController.login()}" class="ui red submit button floated right" />
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+
+
+

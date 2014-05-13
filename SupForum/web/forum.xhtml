@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="template/anonymous.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="head">
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.ui.accordion').accordion();
+            });
+        </script>
+    </ui:define>
+
+    <ui:define name="links">
+        <ui:include src="WEB-INF/menubar.xhtml" />
+    </ui:define>
+
+    <ui:define name="content">
+        <c:forEach var="category" items="#{categoryController.categories}">
+            <h4 class="ui top red attached header">#{category.getName()}</h4>
+            <div class="ui segment attached">
+                <div class="ui accordion">
+                    <c:forEach var="board" items="#{boardController.getBoards(category.getId())}"> 
+                        <div class="title">
+                            <i class="dropdown icon red"></i>
+                            #{board.getName()}
+                        </div>
+                        <div class="content">
+                            <p>You have to login to see topics</p>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+        </c:forEach>
+    </ui:define>
+
+</ui:composition>

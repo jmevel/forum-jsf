@@ -1,0 +1,148 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../template/authenticated.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="head">
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#deleteTopic').popup();
+                $('#editTitle').popup();
+                $('#editContent').popup();
+                $('.popup1').popup();
+
+            });
+
+            function editTitle()
+            {
+                if ($('#title').attr("style") === "display: inline-block")
+                {
+                    $('#title').attr("style", "display: none");
+                }
+                else
+                {
+                    $('#title').attr("style", "display: inline-block");
+                }
+            }
+
+            function editContent()
+            {
+                if ($('#content').attr("style") === "display: inline-block")
+                {
+                    $('#content').attr("style", "display: none");
+                }
+                else
+                {
+                    $('#content').attr("style", "display: inline-block");
+                }
+            }
+
+            function editAnswer(answerId)
+            {
+                if ($('#answer' + answerId).attr("style") === "display: inline-block")
+                {
+                    $('#answer' + answerId).attr("style", "display: none");
+                }
+                else
+                {
+                    $('#answer' + answerId).attr("style", "display: inline-block");
+                }
+            }
+
+            function deleteTopic()
+            {
+                $('.deleteTopicForm').click();
+            }
+
+            function deleteAnswer(answerId)
+            {
+                $('.deleteAnswerForm'+answerId).click();
+            }
+        </script>
+    </ui:define>
+
+    <ui:define name="links">
+        <ui:include src="../WEB-INF/menubar.xhtml" />
+    </ui:define>
+
+    <ui:define name="content">
+        <h4 class="ui top red attached header">
+            #{topicController.topic.getTitle()}
+            <i class="edit icon"  title="Click to edit title" id="editTitle" style="display: inline-block" onclick="editTitle()"></i>
+            <h:form class="ui hidden" style="display: none" id="title">
+                <h:inputText class="hidden" value="#{topicController.topic.title}" valueChangeListener="#{topicController.titleChanged}" />
+            </h:form>
+            <i class="remove circle icon deleteTopic" id="deleteTopic"  title="Click to delete topic" style="display: inline-block; float:right;" onclick="deleteTopic()"></i>
+            <h:form style="display: inline-block" >                                               
+                <h:commandButton value="delete" class="deleteTopicForm" action="#{topicController.deleteTopic()}" style="display: none">                                                   
+                </h:commandButton>   
+            </h:form>
+        </h4>
+        <div class="ui celled grid">
+            <div class="row">
+                <div class="two wide column" style="">
+                    <h4>#{topicController.topic.user.username}</h4>
+                </div>
+                <div class="eight wide column">
+                    <div class="ui top tiny" style="margin-bottom: 10px;">#{topicController.topic.getFormatedCreationDate("dd/MM/yy H:mm")}</div>
+                    <i class="edit icon"  title="Click to edit content" id="editContent" style="float: right" onclick="editContent()"></i>
+                    <h:form class="ui hidden" style="display: none" id="content">
+                        <h:inputTextarea class="hidden" value="#{topicController.topic.content}" style="display: inline-block; width: 700px;" />
+                        <h:commandButton value="Save" action="#{topicController.updateTopic()}" style="display: inline-block;" class="ui red submit button floated right" />
+                    </h:form>
+                    <p>#{topicController.topic.getContent()}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="one wide column"></div>
+            </div>
+            <c:forEach var="answer" items="#{topicController.topic.answers}">
+                <div class="row">
+                    <div class="two wide column">
+                        <h4>#{answer.user.username}</h4>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="ui top tiny">#{answer.getFormatedDate("dd/MM/yy H:mm")}</div>
+                        <i class="remove circle icon popup1"  title="Click to delete answer" style="float: right" onclick="deleteAnswer(#{answer.id})"></i>
+                        <h:form style="display: inline-block" >                                               
+                            <h:commandButton value="delete" class="deleteAnswerForm#{answer.id}" action="#{topicController.deleteAnswer(answer.id)}" style="display: none">                                                   
+                            </h:commandButton>   
+                        </h:form>
+                        <i class="edit icon popup1"  title="Click to edit answer" style="float: right" onclick="editAnswer(#{answer.id})"></i>
+                        <h:form class="ui hidden" style="display: none" id="answer#{answer.id}">
+                            <h:inputTextarea class="hidden" value="#{answer.content}" style="display: inline-block; width: 700px;" />
+                            <h:commandButton value="Save" action="#{topicController.updateAnswer(answer)}" style="display: inline-block;" class="ui red submit button floated right" />
+                        </h:form>
+                        <p>#{answer.content}</p>
+                    </div>
+                </div>
+            </c:forEach>
+            <div class="row">
+                <div class="one wide column"></div>
+            </div>
+            <div class="row">
+                <div class="one wide column">
+                    <div class="ui form">
+                        <h:form class="field">
+                            <label>Answer</label>
+                            <h:inputTextarea value="#{topicController.answerMessage}" label="Username" />
+                            <h:commandButton value="Post" action="#{topicController.postAnswer()}" class="ui red submit button floated right" />
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+
+
+
+
+
+
+
+
